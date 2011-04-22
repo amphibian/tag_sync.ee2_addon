@@ -1,0 +1,15 @@
+select { width: 200px; }
+/* Props to Leevi Graham for his CSS, lifted from NSM Publish Hints */
+.tag_sync_message {
+	background-color:#fffcbf;
+	background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, .5)), to(rgba(255, 255, 255, 0)));
+	background-image:-moz-linear-gradient(top, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
+	border:1px solid #ccc;
+	font-size:12px;
+	margin: 0 0 10px;
+	padding:15px;
+	text-shadow:0 1px 0 #fff;
+	-webkit-box-shadow:0 2px 3px #fff;
+	-moz-box-shadow:0 2px 3px #fff;
+	box-shadow:0 2px 3px #fff;
+}
