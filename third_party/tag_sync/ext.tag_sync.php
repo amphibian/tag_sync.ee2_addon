@@ -23,7 +23,7 @@ class Tag_sync_ext
 {
 	var $settings			= array();
 	var $name				= 'Tag Sync';
-	var $version			= '2.0';
+	var $version			= '2.0.1';
 	var $description		= 'Synchronize Solspace Tag tags to a custom field when entries are publish or updated, or all at once.';
 	var $settings_exist		= 'y';
 	var $docs_url			= 'http://github.com/amphibian/tag_sync.ee2_addon';
@@ -76,7 +76,7 @@ class Tag_sync_ext
 				$sql = "SELECT f.field_id, f.field_label 
 					FROM exp_channels as c, exp_channel_fields as f 
 					WHERE c.field_group = f.group_id
-					AND f.field_type IN ('text', 'textarea')
+					AND f.field_type IN ('tag', 'text', 'textarea')
 					AND c.channel_id = ".$this->EE->db->escape_str($channel_id)." 
 					ORDER BY f.field_order ASC";
 				$fields = $this->EE->db->query($sql);
@@ -148,7 +148,7 @@ class Tag_sync_ext
 					$sql = "UPDATE exp_channel_data SET `field_id_".ceil($custom_field)."` = CASE entry_id ";
 					foreach($tags as $entry_id => $tag)
 					{
-						$sql .= "WHEN ".$entry_id." THEN '".$this->EE->db->escape_str(implode(',', $tag))."' ";
+						$sql .= "WHEN ".$entry_id." THEN '".$this->EE->db->escape_str(implode(' ', $tag))."' ";
 					}
 					$sql .= "END WHERE entry_id IN('".implode("','", $this->EE->db->escape_str($entry_ids))."')";
 					
